@@ -18,8 +18,3 @@ jobs:
         env:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          github_action_config.auto_review: "true"
-        with:
-            entrypoint: /bin/bash
-            args: |
-                python -m pr_agent.cli "custom_prompt --pr_custom_prompt.prompt=Please review only Python (.py) files for the following issues: 1. File/folder names that are meaningless or unclear. 2. Non-snake_case names in files or folders. 3. Empty Python functions that are unused. 4. Missing or empty docstrings on functions/classes. 5. Redundant/duplicated code blocks in the diff."
