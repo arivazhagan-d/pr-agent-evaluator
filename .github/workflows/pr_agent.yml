@@ -1,0 +1,25 @@
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+  issue_comment:
+jobs:
+  pr_agent_job:
+    if: ${{ github.event.sender.type != 'Bot' }}
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: write
+    name: Run pr agent on every pull request, respond to user comments
+    steps:
+      - name: PR Agent action step
+        id: pragent
+        uses: qodo-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_action_config.auto_review: "true"
+        with:
+            entrypoint: /bin/bash
+            args: |
+                python -m pr_agent.cli "custom_prompt --pr_custom_prompt.prompt=Please review only Python (.py) files for the following issues: 1. File/folder names that are meaningless or unclear. 2. Non-snake_case names in files or folders. 3. Empty Python functions that are unused. 4. Missing or empty docstrings on functions/classes. 5. Redundant/duplicated code blocks in the diff."
