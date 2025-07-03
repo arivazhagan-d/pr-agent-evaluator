@@ -27,3 +27,6 @@ jobs:
             5. Redundant/duplicated code blocks in the diff.\
           pr_reviewer.num_max_findings: 30
           github_action_config.auto_describe : "false"
+          pr_code_suggestions.num_code_suggestions_per_chunk: 10
+          pr_code_suggestions.max_number_of_calls: 5
+          pr_code_suggestions.dual_publishing_score_threshold: 5
