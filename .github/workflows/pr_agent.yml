@@ -19,5 +19,6 @@ jobs:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           pr_reviewer.extra_instructions: ${{ vars.PYTHON__PR_REVIEWER__EXTRA_INSTRUCTIONS }}
-          pr_reviewer.num_max_findings: 100
+          pr_reviewer.num_max_findings: 30
           github_action_config.auto_describe : "false"
+          config.max_model_tokens: 64000
