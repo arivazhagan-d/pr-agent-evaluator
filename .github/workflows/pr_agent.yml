@@ -18,12 +18,6 @@ jobs:
         env:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          pr_reviewer.extra_instructions: |
-            Please review only Python (`.py`) files for the following issues:
-            1. File/folder names that are meaningless or unclear.
-            2. Non‑snake_case names for variables or function names.
-            3. Empty Python functions that are unused.
-            4. Missing or empty docstrings on functions/classes.
-            5. Redundant/duplicated code blocks in the diff.\
-          pr_reviewer.num_max_findings: 50
+          pr_reviewer.extra_instructions: ${{ vars.PYTHON__PR_REVIEWER__EXTRA_INSTRUCTIONS }}
+          pr_reviewer.num_max_findings: 30
           github_action_config.auto_describe : "false"
