@@ -23,5 +23,5 @@ jobs:
           github_action_config.auto_describe: "false"
           github_action_config.auto_improve: "false"
           config.max_model_tokens: 64000
-          config.model: "gpt-4.1-mini"
+          config.model: "gpt-4.1"
           config.model_reasoning: "o4-mini"
