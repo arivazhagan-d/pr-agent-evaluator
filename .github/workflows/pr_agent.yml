@@ -19,7 +19,13 @@ jobs:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           pr_reviewer.extra_instructions: ${{ vars.PYTHON__PR_REVIEWER__EXTRA_INSTRUCTIONS }}
+          # Maximum number of comments to report in a PR
           pr_reviewer.num_max_findings: 30
+          # Disable providing descriptions for PRs
           github_action_config.auto_describe: "false"
-          github_action_config.auto_improve: "false"
+          # Disable providing suggestions for PRs
+          github_action_config.auto_improve: ${{ vars.PYTHON__GITHUB_ACTION_CONFIG__AUTO_IMPROVE }}
           config.max_model_tokens: 64000
+          config.model: ${{ vars.CONFIG__MODEL }}
+          # Dedicated reasoning model for self-reflection
+          config.model_reasoning: ${{ vars.CONFIG__MODEL_REASONING }}
